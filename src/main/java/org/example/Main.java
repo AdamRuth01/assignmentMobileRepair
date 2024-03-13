@@ -1,8 +1,6 @@
 package org.example;
 
-import org.example.manager.CustomersMGR;
-import org.example.manager.MobileDevisesMGR;
-import org.example.manager.ReparationsMGR;
+import org.example.manager.*;
 
 import java.util.Scanner;
 
@@ -26,7 +24,11 @@ public class Main {
                 System.out.println("Pleas select a table!\n" +
                         "1: Customers\n" +
                         "2: Mobile Devises\n" +
-                        "3: Reparations\n" +
+                        "3: Preorders\n" +
+                        "4: Cases\n" +
+                        "5: Employees\n" +
+                        "6: Reparations\n" +
+                        "7: Payments\n" +
                         "0: Exit menu");
                 int input = scanner.nextInt();
                 menuSelection(input);
@@ -48,7 +50,8 @@ public class Main {
             case 2:
                 MobileDevisesMGR.crudMobileDevisesMenu();
                 break;
-            case 3: ReparationsMGR.crudReparationMenu();
+
+            case 6: ReparationsMGR.crudReparationMenu();
                 break;
 
         }
