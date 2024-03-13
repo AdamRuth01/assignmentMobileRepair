@@ -48,7 +48,7 @@ public class Main {
             case 2:
                 MobileDevisesMGR.crudMobileDevisesMenu();
                 break;
-            case 6: ReparationsMGR.crudReparationMenu();
+            case 3: ReparationsMGR.crudReparationMenu();
                 break;
 
         }
