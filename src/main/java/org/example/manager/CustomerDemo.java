@@ -32,7 +32,6 @@ public class CustomerDemo {
         }
 
         private void customerSelection(int customerInputSelection) throws SQLException {
-
             switch (customerInputSelection){
                 case 1:
                     createTables();
@@ -58,10 +57,6 @@ public class CustomerDemo {
 
     public CustomerDemo() throws SQLException {
         conn = DriverManager.getConnection(url, username, password);
-        createTables();
-
-
-
     }
 
     private void createTables() throws SQLException {

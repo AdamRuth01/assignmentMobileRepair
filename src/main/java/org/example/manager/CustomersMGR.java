@@ -11,7 +11,7 @@ public class CustomersMGR {
     static String username = "root";
     static String password = "root";
 
-    public void crudCustomersMenu() {
+    public void crudCustomersMenu() throws SQLException {
 
 
         System.out.println("Menu selection CRUD for Customers!");
