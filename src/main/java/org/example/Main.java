@@ -1,22 +1,20 @@
 package org.example;
 
-import org.example.manager.*;
+import org.example.manager.CustomersMGR;
+import org.example.manager.MobileDevicesMGR;
+import org.example.manager.ReparationsMGR;
 
 import java.util.Scanner;
 
 public class Main {
-    CustomersMGR customersMGR;
-    MobileDevisesMGR mobileDevisesMGR;
-    public Main() {
-        customersMGR = new CustomersMGR();
-    }
-
+    static CustomersMGR customersMGR = new CustomersMGR();
+    static MobileDevicesMGR mobileDevisesMGR = new MobileDevicesMGR();
     public static void main(String[] args){
-        Main runner = new Main();
-        runner.menu();
+        menu();
+
 
     }//main
-    public void menu(){
+    public static void menu(){
         System.out.println("* mobile reparation system  *");
         Scanner scanner = new Scanner(System.in);
         while(true){
@@ -24,11 +22,7 @@ public class Main {
                 System.out.println("Pleas select a table!\n" +
                         "1: Customers\n" +
                         "2: Mobile Devises\n" +
-                        "3: Preorders\n" +
-                        "4: Cases\n" +
-                        "5: Employees\n" +
-                        "6: Reparations\n" +
-                        "7: Payments\n" +
+                        "3: Reparations\n" +
                         "0: Exit menu");
                 int input = scanner.nextInt();
                 menuSelection(input);
@@ -36,19 +30,19 @@ public class Main {
                     return;
                 }
             }catch (Exception e){
-                System.out.println("Wrong input... \n" +
-                        "Error please try again");
+                throw e;
+
             }
         }
     }
 
-    private void menuSelection(int selection) {
+    private static void menuSelection(int selection) {
         switch(selection){
             case 1:
                 customersMGR.crudCustomersMenu();
                 break;
             case 2:
-                MobileDevisesMGR.crudMobileDevisesMenu();
+                MobileDevicesMGR.crudMobileDevisesMenu();
                 break;
 
             case 6: ReparationsMGR.crudReparationMenu();

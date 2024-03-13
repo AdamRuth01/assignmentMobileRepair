@@ -1,6 +1,6 @@
 package org.example.models;
 
-public class MobileDevise {
+public class MobileDevice {
 
 
 }
