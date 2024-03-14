@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 public class Main {
     static CustomersMGR customersMGR = new CustomersMGR();
-    static MobileDevicesMGR mobileDevisesMGR = new MobileDevicesMGR();
+    static MobileDevicesMGR mobileDevicesMGR = new MobileDevicesMGR();
     static ReparationsMGR reparationsMGR = new ReparationsMGR();
     public static void main(String[] args) throws SQLException {
         menu();
@@ -46,9 +46,9 @@ public class Main {
                 customersMGR.crudCustomersMenu();
                 break;
             case 2:
-                MobileDevicesMGR.crudMobileDevisesMenu();
+                mobileDevicesMGR.crudMobileDevicesMenu();
                 break;
-            case 3: ReparationsMGR.crudReparationMenu();
+            case 3: reparationsMGR.crudReparationMenu();
                 break;
             case 4:
                 CustomerDemo.customerMenu();

@@ -1,6 +1,7 @@
 package org.example.models;
 
 
+import java.sql.Date;
 import java.time.LocalDateTime;
 
 public class Reparation {
@@ -10,16 +11,16 @@ public class Reparation {
     private String employeeFirstName;
     private String employeeLastName;
     private int employeeNumber;
-    private LocalDateTime  reparationStartDate;
-    private LocalDateTime reparationEndDate;
+    private Date reparationStartDate;
+    private Date reparationEndDate;
     private String reparationStatus;
     private String reparationDescription;
-
+    private String images;
 
     public Reparation() {
     }
 
-    public Reparation(int customerId, int mobileDeviceId, String employeeFirstName, String employeeLastName, int employeeNumber, LocalDateTime reparationStartDate, LocalDateTime reparationEndDate, String reparationStatus, String reparationDescription) {
+    public Reparation(int customerId, int mobileDeviceId, String employeeFirstName, String employeeLastName, int employeeNumber, Date reparationStartDate, Date reparationEndDate, String reparationStatus, String reparationDescription, String images) {
         this.customerId = customerId;
         this.mobileDeviceId = mobileDeviceId;
         this.employeeFirstName = employeeFirstName;
@@ -29,6 +30,7 @@ public class Reparation {
         this.reparationEndDate = reparationEndDate;
         this.reparationStatus = reparationStatus;
         this.reparationDescription = reparationDescription;
+        this.images = images;
     }
 
     public int getId() {
@@ -79,19 +81,19 @@ public class Reparation {
         this.employeeNumber = employeeNumber;
     }
 
-    public LocalDateTime getReparationStartDate() {
+    public Date getReparationStartDate() {
         return reparationStartDate;
     }
 
-    public void setReparationStartDate(LocalDateTime reparationStartDate) {
+    public void setReparationStartDate(Date reparationStartDate) {
         this.reparationStartDate = reparationStartDate;
     }
 
-    public LocalDateTime getReparationEndDate() {
+    public Date getReparationEndDate() {
         return reparationEndDate;
     }
 
-    public void setReparationEndDate(LocalDateTime reparationEndDate) {
+    public void setReparationEndDate(Date reparationEndDate) {
         this.reparationEndDate = reparationEndDate;
     }
 
@@ -111,6 +113,14 @@ public class Reparation {
         this.reparationDescription = reparationDescription;
     }
 
+    public String getImages() {
+        return images;
+    }
+
+    public void setImages(String images) {
+        this.images = images;
+    }
+
     @Override
     public String toString() {
         return "Reparation{" +
@@ -124,6 +134,7 @@ public class Reparation {
                 ", reparationEndDate=" + reparationEndDate +
                 ", reparationStatus='" + reparationStatus + '\'' +
                 ", reparationDescription='" + reparationDescription + '\'' +
+                ", images='" + images + '\'' +
                 '}';
     }
 }

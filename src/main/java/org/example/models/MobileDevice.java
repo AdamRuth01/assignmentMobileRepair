@@ -56,4 +56,6 @@ public class MobileDevice {
                 ", modelNumber='" + modelNumber + '\'' +
                 '}';
     }
+
 }
+

@@ -81,7 +81,7 @@ public class CustomersMGR {
             pstmt.setString(2, obj.getPhoneNumber());
             pstmt.setString(3, obj.getAddress());
             pstmt.executeUpdate();
-            System.out.println("En post har lagts till i tabellen.");
+            System.out.println("The post has been inserted.");
         } catch (SQLException e) {
             System.out.println("Failed during insert statement");
             e.printStackTrace();
@@ -140,11 +140,25 @@ public class CustomersMGR {
         System.out.print("Enter the new name: ");
         String name = scanner.nextLine();
         obj.setName(name);
-        String sql = "UPDATE customers SET customer_name = ?, customer_phone_number WHERE customer_id = ?;";
+        System.out.println("Enter the new phone number: ");
+        String phoneNumber = scanner.nextLine();
+        obj.setPhoneNumber(phoneNumber);
+        System.out.println("Enter address: ");
+        String address = scanner.nextLine();
+        obj.setAddress(address);
+
+        String sql = "UPDATE customers SET customer_name = ?, customer_phone_number = ?,customer_adress = ? WHERE customer_id = ?;";
         try (Connection conn = getConnection(url, username, password);
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, obj.getName());
-            pstmt.setInt(2, obj.getId());
+            pstmt.setString(2, obj.getPhoneNumber());
+            pstmt.setString(3, obj.getAddress());
+            pstmt.setInt(4, obj.getId());
+            System.out.println("The updated ID: "+ obj.getId());
+            System.out.println( "The updated name: "+ obj.getName());
+            System.out.println("The updated phone number: " + obj.getPhoneNumber());
+            System.out.println("The updated address: " + obj.getAddress());
+
             int affectedRows = pstmt.executeUpdate();
             System.out.println(affectedRows + " poster uppdaterades.");
         } catch (SQLException e) {
@@ -155,20 +169,21 @@ public class CustomersMGR {
 
 
     private void deleteDataFromTable() {
+        Customer obj = new Customer();
         Scanner scanner = new Scanner(System.in);
         System.out.print("Chose customer_id to delete: ");
         int id = scanner.nextInt();
-
+        obj.setId(id);
         String sql = "DELETE FROM customers WHERE customer_id = ?;";
-
         try (Connection conn = getConnection(url, username, password);
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
-
-            pstmt.setInt(1, id);
+            pstmt.setInt(1, obj.getId());
             int affectedRows = pstmt.executeUpdate();
-            System.out.println(affectedRows + " poster uppdaterades.");
+            System.out.println("You deleted id: " + obj.getId());
+            System.out.println(affectedRows + " deleted success!");
+            // Ska jag ta bort affeted rows?
         } catch (SQLException e) {
-            System.out.println("Kunde inte uppdatera data.");
+            System.out.println("Could not delete inserted data.");
             e.printStackTrace();
         }
 
