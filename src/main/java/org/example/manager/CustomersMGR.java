@@ -131,17 +131,20 @@ public class CustomersMGR {
     }
 
     private void updateDataIntoTable() {
+        Customer obj = new Customer();
         Scanner scanner = new Scanner(System.in);
         System.out.print("Chose customer_id to update: ");
         int id = scanner.nextInt();
+        obj.setId(id);
         scanner.nextLine();
         System.out.print("Enter the new name: ");
         String name = scanner.nextLine();
-        String sql = "UPDATE customers SET customer_name = ? WHERE customer_id = ?;";
+        obj.setName(name);
+        String sql = "UPDATE customers SET customer_name = ?, customer_phone_number WHERE customer_id = ?;";
         try (Connection conn = getConnection(url, username, password);
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setString(1, name);
-            pstmt.setInt(2, id);
+            pstmt.setString(1, obj.getName());
+            pstmt.setInt(2, obj.getId());
             int affectedRows = pstmt.executeUpdate();
             System.out.println(affectedRows + " poster uppdaterades.");
         } catch (SQLException e) {
@@ -155,10 +158,12 @@ public class CustomersMGR {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Chose customer_id to delete: ");
         int id = scanner.nextInt();
+
         String sql = "DELETE FROM customers WHERE customer_id = ?;";
 
         try (Connection conn = getConnection(url, username, password);
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
             pstmt.setInt(1, id);
             int affectedRows = pstmt.executeUpdate();
             System.out.println(affectedRows + " poster uppdaterades.");
