@@ -22,7 +22,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         while(true){
             try {
-                System.out.println("Pleas select a table!\n" +
+                System.out.println("Please select a table!\n" +
                         "1: Customers\n" +
                         "2: Mobile Devises\n" +
                         "3: Reparations\n" +

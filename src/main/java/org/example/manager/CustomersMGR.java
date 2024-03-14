@@ -2,9 +2,14 @@ package org.example.manager;
 
 
 import org.example.Main;
+import org.example.models.Customer;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
+
+import static java.sql.DriverManager.getConnection;
 
 public class CustomersMGR {
     static String url = "jdbc:mysql://localhost:3306/assignment_mobile_reparation";
@@ -12,11 +17,9 @@ public class CustomersMGR {
     static String password = "root";
 
     public void crudCustomersMenu() throws SQLException {
-
-
         System.out.println("Menu selection CRUD for Customers!");
         Scanner scanner = new Scanner(System.in);
-        while(true){
+        while (true) {
             System.out.println("Existing customers\n");
             readDataFromTable();
             System.out.println();
@@ -28,16 +31,14 @@ public class CustomersMGR {
                             "0: Exit Customers (Back to [main menu] !!! )");
             int customerInputSelection = scanner.nextInt();
             customerSelection(customerInputSelection);
-            if(customerInputSelection == 0){
+            if (customerInputSelection == 0) {
                 Main.main(null);
             }
         }
     }
 
     private void customerSelection(int customerInputSelection) {
-
-
-        switch (customerInputSelection){
+        switch (customerInputSelection) {
             case 1:
                 creatTable();
                 break;
@@ -50,9 +51,6 @@ public class CustomersMGR {
             case 4:
                 deleteDataFromTable();
                 break;
-
-
-
         }
     }
 
@@ -63,68 +61,74 @@ public class CustomersMGR {
                 "customer_phone_number VARCHAR(255) NOT NULL," +
                 "customer_adress VARCHAR(255));";
         System.out.println(sql);
-        /*if (1 == 1){
-            return;
-        }*/
-        try  (Connection conn = DriverManager.getConnection(url,username,password);
-              Statement stmt = conn.createStatement()) {
+        try (Connection conn = getConnection(url, username, password);
+             Statement stmt = conn.createStatement()) {
             stmt.execute(sql);
             System.out.println("The table has been created!");
-        }catch (SQLException e) {
+        } catch (SQLException e) {
             System.out.println("The table was mot created");
             e.printStackTrace();
         }
-
-
-
     }
 
-    private void insertIntoTable() {
-
+    //OLD INSERT
+    private void insert(Customer obj){
         String sql = " INSERT INTO customers (customer_name,customer_phone_number,customer_adress)\n" +
                 "VALUES (?,?,?);";
-        try  (Connection conn = DriverManager.getConnection(url,username,password);
-              PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            Scanner scanner = new Scanner(System.in);
-            System.out.print("Please insert customer name  : ");
-            String name = scanner.nextLine();
-            System.out.print("Please insert customer phone number name  : ");
-            String phoneNumber = scanner.nextLine();
-            System.out.print("Please insert customer adress  : ");
-            String adress = scanner.nextLine();
-
-            pstmt.setString(1, name);
-            pstmt.setString(2, phoneNumber);
-            pstmt.setString(3, adress);
+        try (Connection conn = getConnection(url, username, password);
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, obj.getName());
+            pstmt.setString(2, obj.getPhoneNumber());
+            pstmt.setString(3, obj.getAddress());
             pstmt.executeUpdate();
             System.out.println("En post har lagts till i tabellen.");
-        }catch (SQLException e) {
-            System.out.println("Faild during insert statement");
+        } catch (SQLException e) {
+            System.out.println("Failed during insert statement");
             e.printStackTrace();
         }
+    }
+    private void insertIntoTable()   {
+        Customer obj = new Customer();
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Please insert customer name  : ");
+        String name = scanner.nextLine();
+        obj.setName(name);
+        System.out.print("Please insert customer phone number name  : ");
+        String phoneNumber = scanner.nextLine();
+        obj.setPhoneNumber(phoneNumber);
+        System.out.print("Please insert customer address  : ");
+        String adress = scanner.nextLine();
+        obj.setAddress(adress);
+        insert(obj);
 
     }
 
-    private void readDataFromTable() {
+    private List<Customer> getAll() {
+        var result = new ArrayList<Customer>();
+        try (Connection conn = getConnection(url,username, password);
+             Statement stmt = conn.createStatement()){
+            var resultSet = stmt.executeQuery("SELECT * FROM customers;");
+            while (resultSet.next()) {
+                var obj = new Customer();
 
-        String sql = "SELECT * FROM customers;";
-
-        try (Connection conn = DriverManager.getConnection(url,username, password);
-             Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery(sql)) {
-            while (rs.next()) {
-                int id = rs.getInt("customer_id");
-                String namn = rs.getString("customer_name");
-                String phoneNumber = rs.getString("customer_phone_number");
-                String adress = rs.getString("customer_adress");
-                System.out.println(id + ", " + namn + ", " + phoneNumber + ", " + adress);
+                obj.setId(resultSet.getInt("customer_id"));
+                obj.setName(resultSet.getString("customer_name"));
+                obj.setPhoneNumber(resultSet.getString("customer_phone_number"));
+                obj.setAddress(resultSet.getString("customer_adress"));
+                result.add(obj);
             }
-        } catch (SQLException e) {
+        } catch (SQLException e){
             System.out.println("Kunde inte läsa data.");
             e.printStackTrace();
         }
+        return result;
     }
-
+    private void readDataFromTable() {
+        List<Customer> customers = getAll();
+        for (Customer obj: customers) {
+            System.out.println(obj);
+        }
+    }
 
     private void updateDataIntoTable() {
         Scanner scanner = new Scanner(System.in);
@@ -134,10 +138,9 @@ public class CustomersMGR {
         System.out.print("Enter the new name: ");
         String name = scanner.nextLine();
         String sql = "UPDATE customers SET customer_name = ? WHERE customer_id = ?;";
-
-        try (Connection conn = DriverManager.getConnection(url, username, password);
+        try (Connection conn = getConnection(url, username, password);
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setString(1,name);
+            pstmt.setString(1, name);
             pstmt.setInt(2, id);
             int affectedRows = pstmt.executeUpdate();
             System.out.println(affectedRows + " poster uppdaterades.");
@@ -148,17 +151,15 @@ public class CustomersMGR {
     }
 
 
-
-
     private void deleteDataFromTable() {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Chose customer_id to delete: ");
         int id = scanner.nextInt();
         String sql = "DELETE FROM customers WHERE customer_id = ?;";
 
-        try (Connection conn = DriverManager.getConnection(url, username, password);
+        try (Connection conn = getConnection(url, username, password);
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setInt(1,id);
+            pstmt.setInt(1, id);
             int affectedRows = pstmt.executeUpdate();
             System.out.println(affectedRows + " poster uppdaterades.");
         } catch (SQLException e) {
@@ -167,6 +168,10 @@ public class CustomersMGR {
         }
 
     }
-
-
 }
+
+
+
+
+
+
