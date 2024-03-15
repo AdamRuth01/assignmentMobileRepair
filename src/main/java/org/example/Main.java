@@ -9,7 +9,16 @@ import java.sql.SQLException;
 import java.util.Scanner;
 
 public class Main {
-    static CustomersMGR customersMGR = new CustomersMGR();
+    static CustomersMGR customersMGR;
+
+    static {
+        try {
+            customersMGR = new CustomersMGR();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     static MobileDevicesMGR mobileDevicesMGR = new MobileDevicesMGR();
     static ReparationsMGR reparationsMGR = new ReparationsMGR();
     public static void main(String[] args) throws SQLException {

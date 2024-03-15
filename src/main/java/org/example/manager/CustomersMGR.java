@@ -11,10 +11,14 @@ import java.util.Scanner;
 
 import static java.sql.DriverManager.getConnection;
 
-public class CustomersMGR {
+public class CustomersMGR extends DBConnectionBase_ {
     static String url = "jdbc:mysql://localhost:3306/assignment_mobile_reparation";
     static String username = "root";
     static String password = "root";
+    static Connection conn;
+
+    public CustomersMGR() throws SQLException {
+    }
 
     public void crudCustomersMenu() throws SQLException {
         System.out.println("Menu selection CRUD for Customers!");
@@ -71,8 +75,11 @@ public class CustomersMGR {
         }
     }
 
+
+
+
     //OLD INSERT
-    private void insert(Customer obj){
+    public void insert(Customer obj) {
         String sql = " INSERT INTO customers (customer_name,customer_phone_number,customer_adress)\n" +
                 "VALUES (?,?,?);";
         try (Connection conn = getConnection(url, username, password);
@@ -87,7 +94,8 @@ public class CustomersMGR {
             e.printStackTrace();
         }
     }
-    private void insertIntoTable()   {
+
+    private void insertIntoTable() {
         Customer obj = new Customer();
         Scanner scanner = new Scanner(System.in);
         System.out.print("Please insert customer name  : ");
@@ -103,10 +111,10 @@ public class CustomersMGR {
 
     }
 
-    private List<Customer> getAll() {
+    public List<Customer> getAll() {
         var result = new ArrayList<Customer>();
-        try (Connection conn = getConnection(url,username, password);
-             Statement stmt = conn.createStatement()){
+        try (Connection conn = getConnection(url, username, password);
+             Statement stmt = conn.createStatement()) {
             var resultSet = stmt.executeQuery("SELECT * FROM customers;");
             while (resultSet.next()) {
                 var obj = new Customer();
@@ -117,20 +125,21 @@ public class CustomersMGR {
                 obj.setAddress(resultSet.getString("customer_adress"));
                 result.add(obj);
             }
-        } catch (SQLException e){
+        } catch (SQLException e) {
             System.out.println("Kunde inte läsa data.");
             e.printStackTrace();
         }
         return result;
     }
+
     private void readDataFromTable() {
         List<Customer> customers = getAll();
-        for (Customer obj: customers) {
+        for (Customer obj : customers) {
             System.out.println(obj);
         }
     }
 
-    private void updateDataIntoTable() {
+    public void updateDataIntoTable() {
         Customer obj = new Customer();
         Scanner scanner = new Scanner(System.in);
         System.out.print("Chose customer_id to update: ");
@@ -154,8 +163,8 @@ public class CustomersMGR {
             pstmt.setString(2, obj.getPhoneNumber());
             pstmt.setString(3, obj.getAddress());
             pstmt.setInt(4, obj.getId());
-            System.out.println("The updated ID: "+ obj.getId());
-            System.out.println( "The updated name: "+ obj.getName());
+            System.out.println("The updated ID: " + obj.getId());
+            System.out.println("The updated name: " + obj.getName());
             System.out.println("The updated phone number: " + obj.getPhoneNumber());
             System.out.println("The updated address: " + obj.getAddress());
 
@@ -168,7 +177,7 @@ public class CustomersMGR {
     }
 
 
-    private void deleteDataFromTable() {
+    public void deleteDataFromTable() {
         Customer obj = new Customer();
         Scanner scanner = new Scanner(System.in);
         System.out.print("Chose customer_id to delete: ");
@@ -188,7 +197,12 @@ public class CustomersMGR {
         }
 
     }
+
+    protected Connection getConnection(String url, String username, String password) throws SQLException {
+        return DriverManager.getConnection(url, username, password);
+    }
 }
+
 
 
 
