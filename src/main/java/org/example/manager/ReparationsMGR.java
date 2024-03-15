@@ -18,14 +18,14 @@ import static java.sql.DriverManager.getConnection;
 
 import static java.sql.DriverManager.getConnection;
 
-public class ReparationsMGR {
+public class ReparationsMGR extends DBConnectionBase_{
 
 
-        static String url = "jdbc:mysql://localhost:3306/assignment_mobile_reparation";
-        static String username = "root";
-        static String password = "root";
+    public ReparationsMGR(){
+        super();
+    }
 
-        public void crudReparationMenu() throws SQLException {
+    public void crudReparationMenu() throws SQLException {
             System.out.println("Menu selection CRUD for reparations!");
             Scanner scanner = new Scanner(System.in);
             while (true) {
@@ -83,7 +83,7 @@ public class ReparationsMGR {
                     "\n" +
                     "\n";
             System.out.println(sql);
-            try (Connection conn = getConnection(url, username, password);
+            try (Connection conn = getConnection();
                  Statement stmt = conn.createStatement()) {
                 stmt.execute(sql);
                 System.out.println("The table has been created!");
@@ -97,7 +97,7 @@ public class ReparationsMGR {
         private void insert(Reparation obj){
             String sql = "INSERT INTO reparations (customer_id, mobile_device_id, employee_first_name, employee_last_name, employee_number, reparation_start_date, reparation_end_date, repairation_status, reparation_description, images)"+
                     "VALUES (?,?,?,?,?,?,?,?,?,?);";
-            try (Connection conn = getConnection(url, username, password);
+            try (Connection conn = getConnection();
                  PreparedStatement pstmt = conn.prepareStatement(sql)) {
                 pstmt.setInt(1, obj.getCustomerId());
                 pstmt.setInt(2, obj.getMobileDeviceId());
@@ -183,7 +183,7 @@ public class ReparationsMGR {
 
     private List<Reparation> getAll() {
         var result = new ArrayList<Reparation>();
-        try (Connection conn = getConnection(url, username, password);
+        try (Connection conn = getConnection();
              Statement stmt = conn.createStatement()){
             var resultSet = stmt.executeQuery(" SELECT \n" +
                     " customers.customer_id, \n" +
@@ -261,7 +261,7 @@ public class ReparationsMGR {
                 "SET employee_first_name = ?, employee_last_name = ?, images = ?" +
                 "WHERE reparation_id = ?;";
 
-        try (Connection conn = getConnection(url, username, password);
+        try (Connection conn = getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, obj.getEmployeeFirstName());
             pstmt.setString(2, obj.getEmployeeLastName());
@@ -284,7 +284,7 @@ public class ReparationsMGR {
             int id = scanner.nextInt();
             obj.setId(id);
             String sql = "DELETE FROM mobile_devices WHERE mobile_device_id = ?;";
-            try (Connection conn = getConnection(url, username, password);
+            try (Connection conn = getConnection();
                  PreparedStatement pstmt = conn.prepareStatement(sql)) {
                 pstmt.setInt(1, obj.getId());
                 int affectedRows = pstmt.executeUpdate();

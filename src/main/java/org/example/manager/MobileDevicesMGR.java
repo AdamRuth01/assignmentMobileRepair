@@ -1,5 +1,6 @@
 package org.example.manager;
 
+import com.mysql.cj.xdevapi.DbDocFactory;
 import org.example.Main;
 
 import org.example.models.MobileDevice;
@@ -13,12 +14,13 @@ import static java.sql.DriverManager.getConnection;
 
 import static java.sql.DriverManager.getConnection;
 
-public class MobileDevicesMGR {
-        static String url = "jdbc:mysql://localhost:3306/assignment_mobile_reparation";
-        static String username = "root";
-        static String password = "root";
+public class MobileDevicesMGR extends DBConnectionBase_ {
 
-        public void crudMobileDevicesMenu() throws SQLException {
+    public MobileDevicesMGR() {
+        super();
+    }
+
+    public void crudMobileDevicesMenu() throws SQLException {
             System.out.println("Menu selection CRUD for Mobile  Devices!");
             Scanner scanner = new Scanner(System.in);
             while (true) {
@@ -64,7 +66,7 @@ public class MobileDevicesMGR {
                     "model_number VARCHAR (255) NOT NULL" +
                     ");";
             System.out.println(sql);
-            try (Connection conn = getConnection(url, username, password);
+            try (Connection conn = getConnection();
                  Statement stmt = conn.createStatement()) {
                 stmt.execute(sql);
                 System.out.println("The table has been created!");
@@ -78,7 +80,7 @@ public class MobileDevicesMGR {
         private void insert(MobileDevice obj){
             String sql = "INSERT INTO mobile_devices (imei_number,phone_brand,model_number)"+
                     "VALUES (?,?,?);";
-            try (Connection conn = getConnection(url, username, password);
+            try (Connection conn = getConnection();
                  PreparedStatement pstmt = conn.prepareStatement(sql)) {
                 pstmt.setInt(1, obj.getImeiNumber());
                 pstmt.setString(2, obj.getPhonebrand());
@@ -109,7 +111,7 @@ public class MobileDevicesMGR {
 
         private List<MobileDevice> getAll() {
             var result = new ArrayList<MobileDevice>();
-            try (Connection conn = getConnection(url,username, password);
+            try (Connection conn = getConnection();
                  Statement stmt = conn.createStatement()){
                 var resultSet = stmt.executeQuery("SELECT * FROM mobile_devices;");
                 while (resultSet.next()) {
@@ -153,7 +155,7 @@ public class MobileDevicesMGR {
             obj.setModelNumber(modelNumber);
 
             String sql = "UPDATE mobile_devices SET imei_number = ?, phone_brand = ?, model_number = ? WHERE mobile_device_id = ?;";
-            try (Connection conn = getConnection(url, username, password);
+            try (Connection conn = getConnection();
                  PreparedStatement pstmt = conn.prepareStatement(sql)) {
                 pstmt.setInt(1, obj.getImeiNumber());
                 pstmt.setString(2, obj.getPhonebrand());
@@ -180,7 +182,7 @@ public class MobileDevicesMGR {
             int id = scanner.nextInt();
             obj.setId(id);
             String sql = "DELETE FROM mobile_devices WHERE mobile_device_id = ?;";
-            try (Connection conn = getConnection(url, username, password);
+            try (Connection conn = getConnection();
                  PreparedStatement pstmt = conn.prepareStatement(sql)) {
                 pstmt.setInt(1, obj.getId());
                 int affectedRows = pstmt.executeUpdate();
@@ -192,6 +194,8 @@ public class MobileDevicesMGR {
                 e.printStackTrace();
             }
         }
+
+
     }
 
 

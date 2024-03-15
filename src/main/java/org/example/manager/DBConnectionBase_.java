@@ -14,8 +14,21 @@ public class DBConnectionBase_ {
     static String username = "root";
     static String password = "root";
 
-    public DBConnectionBase_() throws SQLException {
-        conn = DriverManager.getConnection(url, username, password);
+    public DBConnectionBase_()  {
+
+        try {
+            conn = DriverManager.getConnection(url, username, password);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public Connection getConn() {
+        return conn;
+    }
+
+    public void setConn(Connection cn) {
+        this.conn = cn;
     }
 
     private void creatTable() throws SQLException {

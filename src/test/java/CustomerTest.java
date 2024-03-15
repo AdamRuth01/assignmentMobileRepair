@@ -17,27 +17,27 @@ public class CustomerTest {
     private ResultSet mockResultSet;
     private CustomersMGR customersMGR;
    @BeforeEach
-   public void setUp() throws SQLException {
-       mockConnection = mock(Connection.class);
-       mockStatement = mock(PreparedStatement.class);
-       mockResultSet = mock(ResultSet.class);
+    public void setUp() throws SQLException {
+        mockConnection = mock(Connection.class);
+        mockStatement = mock(PreparedStatement.class);
+        mockResultSet = mock(ResultSet.class);
 
-       when(mockConnection.prepareStatement(anyString())).thenReturn(mockStatement);
-       when(mockConnection.createStatement()).thenReturn(mockStatement);
-       when(mockStatement.executeQuery(anyString())).thenReturn(mockResultSet);
+        when(mockConnection.prepareStatement(anyString())).thenReturn(mockStatement);
+        when(mockConnection.createStatement()).thenReturn(mockStatement);
+        when(mockStatement.executeQuery(anyString())).thenReturn(mockResultSet);
 
-       when(mockResultSet.next()).thenReturn(true, false);
-       when(mockResultSet.getInt("customer_id")).thenReturn(1);
-       when(mockResultSet.getString("customer_name")).thenReturn("Test customer name");
-       when(mockResultSet.getString("customer_phone_number")).thenReturn("Test phone number");
-       when(mockResultSet.getString("customer_adress")).thenReturn("Test Adress");
-       customersMGR = new CustomersMGR() {
-           @Override
-           protected Connection getConnection() {
-               return mockConnection;
-           }
-       };
-   }
+        when(mockResultSet.next()).thenReturn(true, false);
+        when(mockResultSet.getInt("customer_id")).thenReturn(1);
+        when(mockResultSet.getString("customer_name")).thenReturn("Test customer name");
+        when(mockResultSet.getString("customer_phone_number")).thenReturn("Test phone number");
+        when(mockResultSet.getString("customer_adress")).thenReturn("Test Adress");
+        customersMGR = new CustomersMGR() {
+            @Override
+            protected Connection getConnection() {
+                return mockConnection;
+            }
+        };
+    }
     @Test
     public void testInsert() throws SQLException {
         Customer customer = new Customer("Test customer name","Test phone number","Test Adress");

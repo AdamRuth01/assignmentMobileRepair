@@ -12,12 +12,13 @@ import java.util.Scanner;
 import static java.sql.DriverManager.getConnection;
 
 public class CustomersMGR extends DBConnectionBase_ {
-    static String url = "jdbc:mysql://localhost:3306/assignment_mobile_reparation";
-    static String username = "root";
-    static String password = "root";
-    static Connection conn;
+  // static String url = "jdbc:mysql://localhost:3306/assignment_mobile_reparation";
+  // static String username = "root";
+  // static String password = "root";
 
-    public CustomersMGR() throws SQLException {
+    public CustomersMGR()  {
+
+        super();
     }
 
     public void crudCustomersMenu() throws SQLException {
@@ -65,7 +66,7 @@ public class CustomersMGR extends DBConnectionBase_ {
                 "customer_phone_number VARCHAR(255) NOT NULL," +
                 "customer_adress VARCHAR(255));";
         System.out.println(sql);
-        try (Connection conn = getConnection(url, username, password);
+        try (Connection conn = getConnection();
              Statement stmt = conn.createStatement()) {
             stmt.execute(sql);
             System.out.println("The table has been created!");
@@ -82,7 +83,7 @@ public class CustomersMGR extends DBConnectionBase_ {
     public void insert(Customer obj) {
         String sql = " INSERT INTO customers (customer_name,customer_phone_number,customer_adress)\n" +
                 "VALUES (?,?,?);";
-        try (Connection conn = getConnection(url, username, password);
+        try (Connection conn = getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, obj.getName());
             pstmt.setString(2, obj.getPhoneNumber());
@@ -113,7 +114,7 @@ public class CustomersMGR extends DBConnectionBase_ {
 
     public List<Customer> getAll() {
         var result = new ArrayList<Customer>();
-        try (Connection conn = getConnection(url, username, password);
+        try (Connection conn = getConnection();
              Statement stmt = conn.createStatement()) {
             var resultSet = stmt.executeQuery("SELECT * FROM customers;");
             while (resultSet.next()) {
@@ -157,7 +158,7 @@ public class CustomersMGR extends DBConnectionBase_ {
         obj.setAddress(address);
 
         String sql = "UPDATE customers SET customer_name = ?, customer_phone_number = ?,customer_adress = ? WHERE customer_id = ?;";
-        try (Connection conn = getConnection(url, username, password);
+        try (Connection conn = getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, obj.getName());
             pstmt.setString(2, obj.getPhoneNumber());
@@ -184,7 +185,7 @@ public class CustomersMGR extends DBConnectionBase_ {
         int id = scanner.nextInt();
         obj.setId(id);
         String sql = "DELETE FROM customers WHERE customer_id = ?;";
-        try (Connection conn = getConnection(url, username, password);
+        try (Connection conn = getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setInt(1, obj.getId());
             int affectedRows = pstmt.executeUpdate();
@@ -195,11 +196,6 @@ public class CustomersMGR extends DBConnectionBase_ {
             System.out.println("Could not delete inserted data.");
             e.printStackTrace();
         }
-
-    }
-
-    protected Connection getConnection(String url, String username, String password) throws SQLException {
-        return DriverManager.getConnection(url, username, password);
     }
 }
 
