@@ -4,15 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0118034b-fea3-4c85-9c87-dff40edb9d88" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/manager/CustomersMGR.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/manager/CustomersMGR.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/manager/DBConnectionBase_.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/manager/DBConnectionBase_.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/manager/MobileDevicesMGR.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/manager/MobileDevicesMGR.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/models/MobileDevice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/models/MobileDevice.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/CustomerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/CustomerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/MobileDevicesTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/MobileDevicesTest.java" afterDir="false" />
-    </list>
+    <list default="true" id="0118034b-fea3-4c85-9c87-dff40edb9d88" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -133,7 +125,7 @@
       <workItem from="1710430408146" duration="15581000" />
       <workItem from="1710492925734" duration="16890000" />
       <workItem from="1710519356256" duration="8824000" />
-      <workItem from="1710584555663" duration="6835000" />
+      <workItem from="1710584555663" duration="7473000" />
     </task>
     <servers />
   </component>
