@@ -12,9 +12,6 @@ import java.util.Scanner;
 import static java.sql.DriverManager.getConnection;
 
 public class CustomersMGR extends DBConnectionBase_ {
-  // static String url = "jdbc:mysql://localhost:3306/assignment_mobile_reparation";
-  // static String username = "root";
-  // static String password = "root";
 
     public CustomersMGR()  {
 
@@ -140,7 +137,7 @@ public class CustomersMGR extends DBConnectionBase_ {
         }
     }
 
-    public void updateDataIntoTable() {
+   public void updateDataIntoTable() {
         Customer obj = new Customer();
         Scanner scanner = new Scanner(System.in);
         System.out.print("Chose customer_id to update: ");

@@ -10,6 +10,7 @@ import java.util.Scanner;
 public class DBConnectionBase_ {
 
     private Connection conn;
+    private Scanner scanner;
     static String url = "jdbc:mysql://localhost:3306/assignment_mobile_reparation";
     static String username = "root";
     static String password = "root";
@@ -21,6 +22,18 @@ public class DBConnectionBase_ {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    protected DBConnectionBase_(Scanner scanner) {
+        this.scanner = scanner;
+    }
+
+    public Scanner getScanner() {
+        return scanner;
+    }
+
+    public void setScanner(Scanner scanner) {
+        this.scanner = scanner;
     }
 
     public Connection getConn() {
@@ -44,9 +57,7 @@ public class DBConnectionBase_ {
             throw new RuntimeException(e);
         }
     }
-    protected Scanner getScanner() {
-        return new Scanner(System.in);
-    }
+
 
     protected Connection getConnection(){
         return conn;

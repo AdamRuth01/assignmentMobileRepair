@@ -77,7 +77,7 @@ public class MobileDevicesMGR extends DBConnectionBase_ {
         }
 
         //OLD INSERT
-        private void insert(MobileDevice obj){
+        public void insert(MobileDevice obj){
             String sql = "INSERT INTO mobile_devices (imei_number,phone_brand,model_number)"+
                     "VALUES (?,?,?);";
             try (Connection conn = getConnection();
@@ -109,7 +109,7 @@ public class MobileDevicesMGR extends DBConnectionBase_ {
 
         }
 
-        private List<MobileDevice> getAll() {
+        public List<MobileDevice> getAll() {
             var result = new ArrayList<MobileDevice>();
             try (Connection conn = getConnection();
                  Statement stmt = conn.createStatement()){
@@ -129,14 +129,14 @@ public class MobileDevicesMGR extends DBConnectionBase_ {
             }
             return result;
         }
-        private void readDataFromTable() {
+        public void readDataFromTable() {
             List<MobileDevice> mobileDevices = getAll();
             for (MobileDevice obj: mobileDevices) {
                 System.out.println(obj);
             }
         }
 
-        private void updateDataIntoTable() {
+        public void updateDataIntoTable() {
             MobileDevice obj = new MobileDevice();
             Scanner scanner = new Scanner(System.in);
             System.out.print("Chose mobile device (id) to update: ");
@@ -175,7 +175,7 @@ public class MobileDevicesMGR extends DBConnectionBase_ {
         }
 
 
-        private void deleteDataFromTable() {
+        public void deleteDataFromTable() {
             MobileDevice obj = new MobileDevice();
             Scanner scanner = new Scanner(System.in);
             System.out.print("Chose mobile Device (id) to delete: ");

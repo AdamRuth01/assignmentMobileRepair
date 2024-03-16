@@ -6,12 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="0118034b-fea3-4c85-9c87-dff40edb9d88" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/manager/CustomersMGR.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/manager/CustomersMGR.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/manager/DBConnectionBase_.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/manager/DBConnectionBase_.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/manager/MobileDevicesMGR.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/manager/MobileDevicesMGR.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/manager/ReparationsMGR.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/manager/ReparationsMGR.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/models/MobileDevice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/models/MobileDevice.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/CustomerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/CustomerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/MobileDevicesTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/MobileDevicesTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,49 +39,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/githubRepos/assignmentMobileRepair",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "terminal",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/githubRepos/assignmentMobileRepair&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;terminal&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
-  <component name="RunManager" selected="Application.Main">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.example.Main" />
-      <module name="assignmentMobileRepair" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.example.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="CustomerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="assignmentMobileRepair" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="CustomerTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+}</component>
+  <component name="RunManager" selected="JUnit.MobileDevicesTest.testDeleteDataFromTable">
     <configuration name="CustomerTest.testDeleteDataFromTable" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="assignmentMobileRepair" />
       <option name="PACKAGE_NAME" value="" />
@@ -92,20 +70,40 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CustomerTest.testInsert" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="MobileDevicesTest.testDeleteDataFromTable" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="assignmentMobileRepair" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="CustomerTest" />
+      <option name="MAIN_CLASS_NAME" value="MobileDevicesTest" />
+      <option name="METHOD_NAME" value="testDeleteDataFromTable" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MobileDevicesTest.testGetAll" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="assignmentMobileRepair" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="MobileDevicesTest" />
+      <option name="METHOD_NAME" value="testGetAll" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MobileDevicesTest.testInsert" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="assignmentMobileRepair" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="MobileDevicesTest" />
       <option name="METHOD_NAME" value="testInsert" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CustomerTest.testUpdateDataIntoTable" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="MobileDevicesTest.testUpdateDataIntoTable" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="assignmentMobileRepair" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="CustomerTest" />
+      <option name="MAIN_CLASS_NAME" value="MobileDevicesTest" />
       <option name="METHOD_NAME" value="testUpdateDataIntoTable" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
@@ -114,11 +112,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main" />
-        <item itemvalue="JUnit.CustomerTest.testInsert" />
-        <item itemvalue="JUnit.CustomerTest" />
+        <item itemvalue="JUnit.MobileDevicesTest.testDeleteDataFromTable" />
+        <item itemvalue="JUnit.MobileDevicesTest.testUpdateDataIntoTable" />
+        <item itemvalue="JUnit.MobileDevicesTest.testGetAll" />
+        <item itemvalue="JUnit.MobileDevicesTest.testInsert" />
         <item itemvalue="JUnit.CustomerTest.testDeleteDataFromTable" />
-        <item itemvalue="JUnit.CustomerTest.testUpdateDataIntoTable" />
       </list>
     </recent_temporary>
   </component>
@@ -135,6 +133,7 @@
       <workItem from="1710430408146" duration="15581000" />
       <workItem from="1710492925734" duration="16890000" />
       <workItem from="1710519356256" duration="8824000" />
+      <workItem from="1710584555663" duration="6835000" />
     </task>
     <servers />
   </component>
