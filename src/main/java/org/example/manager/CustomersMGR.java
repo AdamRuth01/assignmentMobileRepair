@@ -98,12 +98,15 @@ public class CustomersMGR extends DBConnectionBase_ {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Please insert customer name  : ");
         String name = scanner.nextLine();
+        scanner.nextLine();
         obj.setName(name);
         System.out.print("Please insert customer phone number name  : ");
         String phoneNumber = scanner.nextLine();
+        scanner.nextLine();
         obj.setPhoneNumber(phoneNumber);
         System.out.print("Please insert customer address  : ");
         String adress = scanner.nextLine();
+        scanner.nextLine();
         obj.setAddress(adress);
         insert(obj);
 

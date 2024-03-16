@@ -11,9 +11,12 @@ public class DBConnectionBase_ {
 
     private Connection conn;
     private Scanner scanner;
-    static String url = "jdbc:mysql://localhost:3306/assignment_mobile_reparation";
-    static String username = "root";
-    static String password = "root";
+   //AWS conn // static String url = "jdbc:mysql://databaseaws.c3gwgeyewp8u.us-east-1.rds.amazonaws.com:3306/assignment_mobile_reparation";
+   //AWS conn // static String username = "aws_admin";
+   //AWS conn // static String password = "MWUwlqOUJ84AHfhwo7Zw";
+   static String url = "jdbc:mysql://localhost:3306/assignment_mobile_reparation";
+   static String username = "root";
+   static String password = "root";
 
     public DBConnectionBase_()  {
 

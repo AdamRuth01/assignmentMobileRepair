@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0118034b-fea3-4c85-9c87-dff40edb9d88" name="Changes" comment="" />
+    <list default="true" id="0118034b-fea3-4c85-9c87-dff40edb9d88" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/manager/CustomersMGR.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/manager/CustomersMGR.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/manager/DBConnectionBase_.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/manager/DBConnectionBase_.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -51,13 +55,16 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager" selected="JUnit.MobileDevicesTest.testDeleteDataFromTable">
-    <configuration name="CustomerTest.testDeleteDataFromTable" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Application.Main">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.example.Main" />
       <module name="assignmentMobileRepair" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="CustomerTest" />
-      <option name="METHOD_NAME" value="testDeleteDataFromTable" />
-      <option name="TEST_OBJECT" value="method" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -104,11 +111,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.MobileDevicesTest.testDeleteDataFromTable" />
         <item itemvalue="JUnit.MobileDevicesTest.testUpdateDataIntoTable" />
         <item itemvalue="JUnit.MobileDevicesTest.testGetAll" />
         <item itemvalue="JUnit.MobileDevicesTest.testInsert" />
-        <item itemvalue="JUnit.CustomerTest.testDeleteDataFromTable" />
       </list>
     </recent_temporary>
   </component>
@@ -125,7 +132,7 @@
       <workItem from="1710430408146" duration="15581000" />
       <workItem from="1710492925734" duration="16890000" />
       <workItem from="1710519356256" duration="8824000" />
-      <workItem from="1710584555663" duration="7473000" />
+      <workItem from="1710584555663" duration="10238000" />
     </task>
     <servers />
   </component>
