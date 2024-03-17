@@ -136,23 +136,7 @@ public class MobileDevicesMGR extends DBConnectionBase_ {
             }
         }
 
-        public void updateDataIntoTable() {
-            MobileDevice obj = new MobileDevice();
-            Scanner scanner = new Scanner(System.in);
-            System.out.print("Chose mobile device (id) to update: ");
-            int id = scanner.nextInt();
-            obj.setId(id);
-            scanner.nextLine();
-            System.out.print("Enter the new (imei number): ");
-            int imei = scanner.nextInt();
-            obj.setImeiNumber(imei);
-            scanner.nextLine();
-            System.out.println("Enter the new (phone brand): ");
-            String phoneBrand = scanner.nextLine();
-            obj.setPhonebrand(phoneBrand);
-            System.out.println("Enter (model number): ");
-            String modelNumber = scanner.nextLine();
-            obj.setModelNumber(modelNumber);
+        public void update(MobileDevice obj){
 
             String sql = "UPDATE mobile_devices SET imei_number = ?, phone_brand = ?, model_number = ? WHERE mobile_device_id = ?;";
             try (Connection conn = getConnection();
@@ -172,21 +156,39 @@ public class MobileDevicesMGR extends DBConnectionBase_ {
                 System.out.println("Could not update object!");
                 e.printStackTrace();
             }
+
         }
 
 
-        public void deleteDataFromTable() {
+        public void updateDataIntoTable() {
             MobileDevice obj = new MobileDevice();
             Scanner scanner = new Scanner(System.in);
-            System.out.print("Chose mobile Device (id) to delete: ");
+            System.out.print("Chose mobile device (id) to update: ");
             int id = scanner.nextInt();
             obj.setId(id);
+            scanner.nextLine();
+            System.out.print("Enter the new (imei number): ");
+            int imei = scanner.nextInt();
+            obj.setImeiNumber(imei);
+            scanner.nextLine();
+            System.out.println("Enter the new (phone brand): ");
+            String phoneBrand = scanner.nextLine();
+            obj.setPhonebrand(phoneBrand);
+            System.out.println("Enter (model number): ");
+            String modelNumber = scanner.nextLine();
+            obj.setModelNumber(modelNumber);
+            update(obj);
+
+        }
+
+
+        public void delete(int obj){
             String sql = "DELETE FROM mobile_devices WHERE mobile_device_id = ?;";
             try (Connection conn = getConnection();
                  PreparedStatement pstmt = conn.prepareStatement(sql)) {
-                pstmt.setInt(1, obj.getId());
+                pstmt.setInt(1, obj);
                 int affectedRows = pstmt.executeUpdate();
-                System.out.println("You deleted id: " + obj.getId());
+                System.out.println("You deleted id: " + obj);
                 System.out.println(affectedRows + " deleted success!");
                 // Ska jag ta bort affeted rows?
             } catch (SQLException e) {
@@ -194,6 +196,18 @@ public class MobileDevicesMGR extends DBConnectionBase_ {
                 e.printStackTrace();
             }
         }
+
+
+
+        public void deleteDataFromTable(){
+        MobileDevice obj=new MobileDevice();
+        Scanner scanner=new Scanner(System.in);
+        System.out.print("Chose mobile Device (id) to delete: ");
+        int id=scanner.nextInt();
+        delete(id);
+
+}
+
 
 
     }

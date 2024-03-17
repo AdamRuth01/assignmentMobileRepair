@@ -76,8 +76,6 @@ public class CustomerTest {
         testCustomer.setName("Test customer name");
         testCustomer.setPhoneNumber("Test phone number");
         testCustomer.setAddress("Test Adress");
-        when(mockScanner.nextInt()).thenReturn(testCustomer.getId());
-        when(mockScanner.nextLine()).thenReturn(testCustomer.getName(), testCustomer.getPhoneNumber(), testCustomer.getAddress());
         when(mockConnection.prepareStatement(anyString())).thenReturn(mockStatement);
         when(mockStatement.executeUpdate()).thenReturn(1);
         customersMGR = new CustomersMGR() {
@@ -85,12 +83,8 @@ public class CustomerTest {
             protected Connection getConnection() {
                 return mockConnection;
             }
-            @Override
-            public Scanner getScanner() {
-                return mockScanner;
-            }
         };
-        customersMGR.updateDataIntoTable();
+        customersMGR.update(testCustomer);
         verify(mockConnection).prepareStatement(anyString());
         verify(mockStatement).setString(1, testCustomer.getName());
         verify(mockStatement).setString(2, testCustomer.getPhoneNumber());
@@ -100,7 +94,6 @@ public class CustomerTest {
     @Test
     public void testDeleteDataFromTable() throws SQLException {
         int testCustomerId = 1;
-        when(mockScanner.nextInt()).thenReturn(testCustomerId);
         when(mockConnection.prepareStatement(anyString())).thenReturn(mockStatement);
         when(mockStatement.executeUpdate()).thenReturn(1);
         customersMGR = new CustomersMGR() {
@@ -108,13 +101,8 @@ public class CustomerTest {
             protected Connection getConnection() {
                 return mockConnection;
             }
-
-            @Override
-            public Scanner getScanner() {
-                return mockScanner;
-            }
         };
-        customersMGR.deleteDataFromTable();
+        customersMGR.delete(testCustomerId);
         verify(mockConnection).prepareStatement(anyString());
         verify(mockStatement).setInt(1, testCustomerId);
         verify(mockStatement).executeUpdate();

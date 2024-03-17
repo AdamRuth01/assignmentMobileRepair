@@ -140,23 +140,7 @@ public class CustomersMGR extends DBConnectionBase_ {
         }
     }
 
-   public void updateDataIntoTable() {
-        Customer obj = new Customer();
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Chose customer_id to update: ");
-        int id = scanner.nextInt();
-        obj.setId(id);
-        scanner.nextLine();
-        System.out.print("Enter the new name: ");
-        String name = scanner.nextLine();
-        obj.setName(name);
-        System.out.println("Enter the new phone number: ");
-        String phoneNumber = scanner.nextLine();
-        obj.setPhoneNumber(phoneNumber);
-        System.out.println("Enter address: ");
-        String address = scanner.nextLine();
-        obj.setAddress(address);
-
+    public void update(Customer obj) {
         String sql = "UPDATE customers SET customer_name = ?, customer_phone_number = ?,customer_adress = ? WHERE customer_id = ?;";
         try (Connection conn = getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -176,27 +160,43 @@ public class CustomersMGR extends DBConnectionBase_ {
             e.printStackTrace();
         }
     }
-
-
-    public void deleteDataFromTable() {
+    public void updateDataIntoTable() {
         Customer obj = new Customer();
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Chose customer_id to delete: ");
+        System.out.print("Chose customer_id to update: ");
         int id = scanner.nextInt();
         obj.setId(id);
+        scanner.nextLine();
+        System.out.print("Enter the new name: ");
+        String name = scanner.nextLine();
+        obj.setName(name);
+        System.out.println("Enter the new phone number: ");
+        String phoneNumber = scanner.nextLine();
+        obj.setPhoneNumber(phoneNumber);
+        System.out.println("Enter address: ");
+        String address = scanner.nextLine();
+        obj.setAddress(address);
+        update(obj);
+    }
+    public void delete(int customer_id) {
         String sql = "DELETE FROM customers WHERE customer_id = ?;";
         try (Connection conn = getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setInt(1, obj.getId());
+            pstmt.setInt(1,customer_id);
             int affectedRows = pstmt.executeUpdate();
-            System.out.println("You deleted id: " + obj.getId());
-            System.out.println(affectedRows + " deleted success!");
-            // Ska jag ta bort affeted rows?
+            System.out.println("You deleted id: " + customer_id);
         } catch (SQLException e) {
             System.out.println("Could not delete inserted data.");
             e.printStackTrace();
         }
     }
+    public void deleteDataFromTable() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Chose customer_id to delete: ");
+        int id = scanner.nextInt();
+        delete(id);
+    }
+
 }
 
 

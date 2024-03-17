@@ -10,7 +10,6 @@ import java.util.Scanner;
 public class DBConnectionBase_ {
 
     private Connection conn;
-    private Scanner scanner;
    //AWS conn // static String url = "jdbc:mysql://databaseaws.c3gwgeyewp8u.us-east-1.rds.amazonaws.com:3306/assignment_mobile_reparation";
    //AWS conn // static String username = "aws_admin";
    //AWS conn // static String password = "MWUwlqOUJ84AHfhwo7Zw";
@@ -23,22 +22,12 @@ public class DBConnectionBase_ {
         try {
             conn = DriverManager.getConnection(url, username, password);
         } catch (SQLException e) {
+            System.out.println("-------------------------------------------");
+            e.printStackTrace();
+            System.out.println("-------------------------------------------");
             throw new RuntimeException(e);
         }
     }
-
-    protected DBConnectionBase_(Scanner scanner) {
-        this.scanner = scanner;
-    }
-
-    public Scanner getScanner() {
-        return scanner;
-    }
-
-    public void setScanner(Scanner scanner) {
-        this.scanner = scanner;
-    }
-
     public Connection getConn() {
         return conn;
     }
@@ -62,7 +51,14 @@ public class DBConnectionBase_ {
     }
 
 
-    protected Connection getConnection(){
+    protected Connection getConnection() {
+        try {
+            if (conn == null || conn.isClosed()) {
+                conn = DriverManager.getConnection(url, username, password);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return conn;
     }
 }

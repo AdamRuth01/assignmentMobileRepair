@@ -80,8 +80,6 @@ public class MobileDevicesTest {
         testMobileDevice.setImeiNumber(123);
         testMobileDevice.setPhonebrand("Apple");
         testMobileDevice.setModelNumber("12 pro");
-        when(mockScanner.nextInt()).thenReturn(testMobileDevice.getId(),testMobileDevice.getImeiNumber());
-        when(mockScanner.nextLine()).thenReturn(testMobileDevice.getPhonebrand(), testMobileDevice.getModelNumber());
         when(mockConnection.prepareStatement(anyString())).thenReturn(mockStatement);
         when(mockStatement.executeUpdate()).thenReturn(1);
         mobileDevicesMGR = new MobileDevicesMGR() {
@@ -89,12 +87,9 @@ public class MobileDevicesTest {
             protected Connection getConnection() {
                 return mockConnection;
             }
-            @Override
-            public Scanner getScanner() {
-                return mockScanner;
-            }
+
         };
-        mobileDevicesMGR.updateDataIntoTable();
+        mobileDevicesMGR.update(testMobileDevice);
         verify(mockConnection).prepareStatement(anyString());
         verify(mockStatement).setInt(1, testMobileDevice.getImeiNumber());
         verify(mockStatement).setString(2, testMobileDevice.getPhonebrand());
@@ -104,7 +99,6 @@ public class MobileDevicesTest {
     @Test
     public void testDeleteDataFromTable() throws SQLException {
         int testModelDeviceId = 1;
-        when(mockScanner.nextInt()).thenReturn(testModelDeviceId);
         when(mockConnection.prepareStatement(anyString())).thenReturn(mockStatement);
         when(mockStatement.executeUpdate()).thenReturn(1);
         mobileDevicesMGR = new MobileDevicesMGR() {
@@ -112,13 +106,8 @@ public class MobileDevicesTest {
             protected Connection getConnection() {
                 return mockConnection;
             }
-
-            @Override
-            public Scanner getScanner() {
-                return mockScanner;
-            }
         };
-        mobileDevicesMGR.deleteDataFromTable();
+        mobileDevicesMGR.delete(testModelDeviceId);
         verify(mockConnection).prepareStatement(anyString());
         verify(mockStatement).setInt(1, testModelDeviceId);
         verify(mockStatement).executeUpdate();
