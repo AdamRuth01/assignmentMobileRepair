@@ -1,6 +1,5 @@
 package org.example;
 
-import org.example.manager.CustomerDemo;
 import org.example.manager.CustomersMGR;
 import org.example.manager.MobileDevicesMGR;
 import org.example.manager.ReparationsMGR;
@@ -50,8 +49,7 @@ public class Main {
                 break;
             case 3: reparationsMGR.crudReparationMenu();
                 break;
-            case 4:
-                CustomerDemo.customerMenu();
+
 
 
         }

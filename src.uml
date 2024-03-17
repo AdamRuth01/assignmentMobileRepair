@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>C:/githubRepos/assignmentMobileRepair/src</OriginalElement>
+  <nodes>
+    <node x="823.0" y="225.0">org.example.manager.ReparationsMGR</node>
+    <node x="-104.0" y="-14.0">org.example.models.Reparation</node>
+    <node x="587.0" y="-14.0">org.example.manager.DBConnectionBase_</node>
+    <node x="189.0" y="676.0">org.example.models.Customer</node>
+    <node x="479.0" y="676.0">MobileDevicesTest</node>
+    <node x="-104.0" y="1030.0">org.example.Main</node>
+    <node x="771.0" y="676.0">CustomerTest</node>
+    <node x="580.0" y="201.0">org.example.manager.CustomersMGR</node>
+    <node x="-104.0" y="676.0">org.example.models.MobileDevice</node>
+    <node x="315.0" y="201.0">org.example.manager.MobileDevicesMGR</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="org.example.manager.CustomersMGR" target="org.example.manager.DBConnectionBase_" relationship="GENERALIZATION">
+      <point x="0.0" y="-165.5" />
+      <point x="0.0" y="82.5" />
+    </edge>
+    <edge source="org.example.manager.ReparationsMGR" target="org.example.manager.DBConnectionBase_" relationship="GENERALIZATION">
+      <point x="0.0" y="-141.5" />
+      <point x="935.5" y="176.0" />
+      <point x="691.5" y="176.0" />
+      <point x="0.0" y="82.5" />
+    </edge>
+    <edge source="org.example.manager.MobileDevicesMGR" target="org.example.manager.DBConnectionBase_" relationship="GENERALIZATION">
+      <point x="0.0" y="-165.5" />
+      <point x="437.5" y="176.0" />
+      <point x="691.5" y="176.0" />
+      <point x="0.0" y="82.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="0.443796835970025" showDependencies="false" x="472.0" y="576.5" />
+  <SelectedNodes>
+    <node>org.example.Main</node>
+    <node>MobileDevicesTest</node>
+    <node>CustomerTest</node>
+    <node>org.example.manager.MobileDevicesMGR</node>
+    <node>org.example.models.Reparation</node>
+    <node>org.example.manager.CustomersMGR</node>
+    <node>org.example.models.Customer</node>
+    <node>org.example.manager.DBConnectionBase_</node>
+    <node>org.example.manager.ReparationsMGR</node>
+    <node>org.example.models.MobileDevice</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Constructors</Category>
+    <Category>Fields</Category>
+    <Category>Inner Classes</Category>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
