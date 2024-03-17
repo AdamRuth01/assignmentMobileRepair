@@ -59,11 +59,24 @@ The `reparations` table has two foreign keys, `customer_id` and `mobile_device_i
 - --
 ### Functions
 #####
-* __: 
+* _Code Functions_:
+* * The function in the code:
+1. JDBC connection
+2. CRUD for each methode
+3. Test environment implemented
+4. Possibility for AWS RDS Connection
+* * *Main description:* The program is a Fictitious definition of a mobile reparation company with `customers, mobile devices and reparation` entity's that define each class and makes it possible to crud each table/class.
 
 - --
 ### Code structure
 #####
-* __: 
+* _Code structure_: 
+* * The code structure is implemented after `My-SQL-Workbench` structure.
+The code has been implemented and configured afterwards depending on the change in the test environment,
+    just fine adjustment for make `(Mock)` easier.
 
+
+
+
+![img.png](img.png)
 - --
